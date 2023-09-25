@@ -26,7 +26,7 @@ export default defineComponent({
 
 <script setup>
 import { computed } from "vue";
-import { productsStore } from "../stores/products";
+import { productsStore } from "@/stores/products";
 import { useRoute, useRouter } from "vue-router";
 
 const store = productsStore();
@@ -39,8 +39,9 @@ const selectedProduct = computed(() => {
 });
 
 const addToCart = () => {
-    router.push({ name: 'CartView' });
-}
+  store.addToCart(selectedProduct.value);
+  router.push({ name: 'CartView' });
+};
 
 
 </script>
